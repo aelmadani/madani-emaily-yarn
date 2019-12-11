@@ -29,11 +29,11 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Express will serve up production assets like main.js
+app.use(express.static("./client/build/"));
+
 authRoutes(app);
 billingRoutes(app);
-
-// Express will serve up production assets like main.js
-app.use(express.static("./client/build"));
 
 // Express will serve uo the index.html if route is not recognized
 const path = require("path");
