@@ -19,6 +19,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Express will serve up production assets like main.js
+app.use(express.static("./client/build/"));
+
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -28,9 +31,6 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-// Express will serve up production assets like main.js
-app.use(express.static("./client/build/"));
 
 authRoutes(app);
 billingRoutes(app);
