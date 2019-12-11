@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "cd client && yarn && yarn run build && cd .. && node index",
-    "dev": "node index"
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"yarn run server\" \"yarn run client\""
   },
   "dependencies": {
     "body-parser": "^1.19.0",
